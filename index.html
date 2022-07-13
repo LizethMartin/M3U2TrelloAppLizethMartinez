@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap Portfolio Page Template</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.3.1.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <!--Axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!--Moment-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <!--Hammer-->
+    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
+    <!--Draggable-->
+    <!-- Entire bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.bundle.js"></script>
+    <!-- legacy bundle for older browsers (IE11) -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.bundle.legacy.js"></script>
+    <!-- Draggable only -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.js"></script>
+    <!-- Sortable only -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/sortable.js"></script>
+    <!-- Droppable only -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/droppable.js"></script>
+    <!-- Swappable only -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/swappable.js"></script>
+    <!-- Plugins only -->
+    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/plugins.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="btn my-2 my-sm-0"><img src="img/menu.png" alt=""></button>
+        <a class="navbar-brand logoTrello" href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown  active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Espacios de trabajo
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-center" href="#">Espacios de trabajo</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <p><small>Espacio de trabajo actual</small></p>
+                            <img src="img/spaces.PNG" alt="">
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <p><small>Tus espacio de trabajo</small></p>
+                            <img src="img/spaces.PNG" alt="">
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown  active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Reciente
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Modulo 3</a>
+                        <a class="dropdown-item" href="#">Modulo 2</a>
+                        <a class="dropdown-item" href="#">Modulo 1</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown  active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Marcado
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Tableros marcados</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><img
+                                src="https://a.trellocdn.com/prgb/dist/images/starred-boards-menu/starred-board.cc47d0a8c646581ccd08.svg"
+                                alt="">
+                            <p class="text-center">Marque los tableros importantes para
+                                <br> acceder a ellos de forma rápida y sencilla.
+                            </p>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown  active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Plantillas
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-center" href="#">Plantillas</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <p> <small> <b>Principales plantillas</b> </small>
+                            </p>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">
+                            <div class="row">
+                                <div class="col-2">
+                                    <img src="img/icon.png" class="img-fluid 75" alt="">
+                                </div>
+                                <div class="col-10 ">
+                                    <p class="text-truncate">Consulte cientos de plantillas de la
+                                        <br> Trello Community
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button type="button" class="btn btn-outline-light my-2 my-sm-0" data-toggle="modal" data-target="#Form" >Nueva Tarea</button>
+            </form>
+        </div>
+    </nav>
+    <div id="tablero" class="container my-5 ">
+        <div class="row text-center">
+            <div class="col-md-4 pb-1 pb-md-0">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 id="Duster" class="card-title"> Lista de tareas</h5>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#Form" ><svg xmlns="http://www.w3.org/2000/svg"
+                                width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg> <small> <b>Añada una tarjeta</b> </small> </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 pb-1 pb-md-0">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 id="Duster" class="card-title"> En proceso</h5>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#Form" ><svg xmlns="http://www.w3.org/2000/svg"
+                                width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg> <small> <b>Añada una tarjeta</b> </small> </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 pb-1 pb-md-0">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 id="Duster" class="card-title">Hecho</h5>
+                    </div>
+                    <div class="card-body">
+                    </div>
+                    <div class="card-footer text-muted">
+                        <button type="button" class="btn btn-light btn-block" data-toggle="modal" data-target="#Form" ><svg xmlns="http://www.w3.org/2000/svg"
+                                width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg> <small> <b>Añada una tarjeta</b> </small> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Form" tabindex="-1" role="dialog" aria-labelledby="FormLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="FormLabel">Nueva Tarea</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="title" class="col-form-label">Titulo:</label>
+                            <input type="text" class="form-control" id="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="user">Encargado:</label>
+                            <select class="form-control" name="user">
+                                <option value="">--Seleccionar--</option>
+                                <option value="user1">Usuario 1</option>
+                                <option value="user2">Usuario 2</option>
+                                <option value="user3">Usuario 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="deadLine">Plazo entrega:</label>
+                            <select class="form-control" name="deadLine">
+                                <option value="">--Seleccionar--</option>
+                                <option value="oneWeek">Una semana</option>
+                                <option value="twoWeek">Dos semanas</option>
+                                <option value="threeWeek">Tres semanas</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark">Agregar Tarea</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap-4.3.1.js"></script>
+</body>
+
+</html>

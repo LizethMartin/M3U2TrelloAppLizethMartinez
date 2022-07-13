@@ -1,0 +1,24 @@
+.logoTrello {
+    content: '';
+    background-image: url(https://a.trellocdn.com/prgb/dist/images/header-logo-spirit.d947df93bc055849898e.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 8vw;
+    height: 3vh;
+}
+
+.logoTrello:hover {
+    content: '';
+    background-image: url(https://a.trellocdn.com/prgb/dist/images/header-logo-spirit-loading.87e1af770a49ce8e84e3.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 8vw;
+    height: 3vh;
+}
+
+body {
+    background-image: url(../img/Fondo2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
