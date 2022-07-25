@@ -11,6 +11,8 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap-4.3.1.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <!-- Script JavaScript con api fake-->
+    <script src="js/api.js"></script>
     <!--Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,23 +27,15 @@
     <!--Hammer-->
     <script src="https://hammerjs.github.io/dist/hammer.js"></script>
     <!--Draggable-->
-    <!-- Entire bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.bundle.js"></script>
-    <!-- legacy bundle for older browsers (IE11) -->
-    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.bundle.legacy.js"></script>
     <!-- Draggable only -->
     <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.js"></script>
     <!-- Sortable only -->
     <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/sortable.js"></script>
-    <!-- Droppable only -->
-    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/droppable.js"></script>
-    <!-- Swappable only -->
-    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/swappable.js"></script>
-    <!-- Plugins only -->
-    <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/plugins.js"></script>
+
+    
 </head>
 
-<body>
+<body onload="consultar()" id="app">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="btn my-2 my-sm-0"><img src="img/menu.png" alt=""></button>
         <a class="navbar-brand logoTrello" href="#"></a>
@@ -133,16 +127,18 @@
         </div>
     </nav>
     <div id="tablero" class="container my-5 ">
-        <div class="row text-center">
-            <div class="col-md-4 pb-1 pb-md-0">
-                <div class="card">
+        <div class="row text-center" id="dropzone">
+            <div class="col-md-4 pb-1 pb-md-0 dropzone">
+                <div  class="card connectedSortable">
                     <div class="card-header">
-                        <h5 id="Duster" class="card-title"> Lista de tareas</h5>
+                        <h5 class="card-title"> Lista de tareas</h5>
                     </div>
-                    <div class="card-body">
+                    <div id="task1" class="card-body">
+                        <div class="containerTask" id="toDo">
+                        </div>
                     </div>
                     <div class="card-footer text-muted">
-                        <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                        <button type="button" onclick="specificTask('to-do')" class="btn btn-light btn-block" data-toggle="modal"
                             data-target="#Form"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                 fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                                 <path
@@ -151,15 +147,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 pb-1 pb-md-0">
-                <div class="card">
+            <div class="col-md-4 pb-1 pb-md-0 dropzone">
+                <div id="task2"  class="card connectedSortable">
                     <div class="card-header">
-                        <h5 id="Duster" class="card-title"> En proceso</h5>
+                        <h5 class="card-title"> En proceso</h5>
                     </div>
-                    <div class="card-body">
+                    <div id="task2" class="card-body">
+                        <div class="containerTask" id="process"></div>
                     </div>
                     <div class="card-footer text-muted">
-                        <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                        <button type="button" onclick="specificTask('process')"  class="btn btn-light btn-block" data-toggle="modal"
                             data-target="#Form"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                 fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                                 <path
@@ -168,15 +165,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 pb-1 pb-md-0">
-                <div class="card">
+            <div class="col-md-4 pb-1 pb-md-0 dropzone">
+                <div id="task3"  class="card connectedSortable">
                     <div class="card-header">
-                        <h5 id="Duster" class="card-title">Hecho</h5>
+                        <h5 class="card-title">Hecho</h5>
                     </div>
-                    <div class="card-body">
+                    <div id="task3" class="card-body">
+                        <div class="containerTask" id="done"></div>
                     </div>
                     <div class="card-footer text-muted">
-                        <button type="button" class="btn btn-light btn-block" data-toggle="modal"
+                        <button type="button" onclick="specificTask('done')" class="btn btn-light btn-block" data-toggle="modal"
                             data-target="#Form"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                 fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                                 <path
@@ -198,14 +196,14 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="newTaskForm">
                         <div class="form-group">
                             <label for="title" class="col-form-label">Titulo:</label>
                             <input type="text" class="form-control" id="title">
                         </div>
                         <div class="form-group">
                             <label for="user">Encargado:</label>
-                            <select class="form-control" name="user">
+                            <select class="form-control" id="user" name="user">
                                 <option value="">--Seleccionar--</option>
                                 <option value="user1">Usuario 1</option>
                                 <option value="user2">Usuario 2</option>
@@ -214,26 +212,31 @@
                         </div>
                         <div class="form-group">
                             <label for="deadLine">Plazo entrega:</label>
-                            <select class="form-control" name="deadLine">
+                            <select class="form-control" id="deadLine" name="deadLine">
                                 <option value="">--Seleccionar--</option>
-                                <option value="oneWeek">Una semana</option>
-                                <option value="twoWeek">Dos semanas</option>
-                                <option value="threeWeek">Tres semanas</option>
+                                <option value="7">Una semana</option>
+                                <option value="14">Dos semanas</option>
+                                <option value="21">Tres semanas</option>
                             </select>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark">Agregar Tarea</button>
+                    <button type="button" onclick="addTask()"  class="btn btn-outline-dark">Agregar Tarea</button>
                 </div>
             </div>
         </div>
     </div>
+    <div id="myElement"></div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/helpers/jquery-3.3.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap-4.3.1.js"></script>
+    <script src="js/helpers/popper.min.js"></script>
+    <script src="js/helpers/bootstrap-4.3.1.js"></script>
+    <!--Hammer-->
+    <script src="js/gesturesHammer.js"></script>
+    <!--Draggable-->
+    <script src="js/draggable.js"></script>
 </body>
 
 </html>

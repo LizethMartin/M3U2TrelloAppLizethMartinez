@@ -20,5 +20,12 @@ body {
     background-image: url(../img/Fondo2.png);
     background-repeat: no-repeat;
     background-size: cover;
+}
 
+.draggable--over {
+    border-color: black;
+}
+
+.containerTask{
+    height: 65vh;
 }
