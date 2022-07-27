@@ -40,7 +40,7 @@ function addTask() {
         dataForm = {
             "title": $("#title").val(),
             "person": $("#user").val(),
-            "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            "details": $("#details").val(),
             "state": this.state,
             "deadline": Number(moment().add($("#deadLine").val(), 'days')),
             "created": Number(moment())
@@ -49,7 +49,7 @@ function addTask() {
         dataForm = {
             "title": $("#title").val(),
             "person": $("#user").val(),
-            "details": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            "details": $("#details").val(),
             "state": "to-do",
             "deadline": Number(moment().add(Number($("#deadLine").val()), 'days')),
             "created": Number(moment())
@@ -83,7 +83,7 @@ function drawTaskState(task) {
 //Función para determinar donde crear el card nuevo 
 function drawTask(taskDraw) {
     //Creación variable con html para agregar el card y retorna la variable
-    const card = '<div  class="card mt-3 task"" style="width: 18rem;"><div class="card-body"><h5 class="card-title">' + taskDraw.title + '</h5><h6 class="card-subtitle mb-2 text-muted">' + taskDraw.person + '</h6><p class="card-text">Deadline: ' + this.getDate(taskDraw.deadline) + '</p></div></div>';
+    const card = '<div  class="card mt-3 task"" style="width: 18rem;"><div class="card-body"><h5 class="card-title">' + taskDraw.title + '</h5><h6 class="card-subtitle mb-2 text-muted">' + taskDraw.person + '</h6><p class="card-text">' + taskDraw.details + '<br><br><span class="deadline"><b>Deadline: ' + this.getDate(taskDraw.deadline) + '</span></b></p></div></div>';
     return card
 }
 

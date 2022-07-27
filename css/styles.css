@@ -29,3 +29,7 @@ body {
 .containerTask{
     height: 65vh;
 }
+
+.deadline{
+    color: rgb(85, 80, 98);
+}
