@@ -24,8 +24,6 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!--Moment-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
-    <!--Hammer-->
-    <script src="https://hammerjs.github.io/dist/hammer.js"></script>
     <!--Draggable-->
     <!-- Draggable only -->
     <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.11/lib/draggable.js"></script>
@@ -36,6 +34,7 @@
 </head>
 
 <body onload="consultar()" id="app">
+    <!--Navbar Fake-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="btn my-2 my-sm-0"><img src="img/menu.png" alt=""></button>
         <a class="navbar-brand logoTrello" href="#"></a>
@@ -126,16 +125,19 @@
             </form>
         </div>
     </nav>
+
+    <!--Tablero trello-->
     <div id="tablero" class="container my-5 ">
-        <div class="row text-center" id="dropzone">
-            <div class="col-md-4 pb-1 pb-md-0 dropzone">
-                <div  class="card connectedSortable">
+        <div class="row text-center">
+            <div class="col-md-4 pb-1 pb-md-0">
+                <!--Card para la lista de tareas por hacer-->
+                <div  class="card">
                     <div class="card-header">
                         <h5 class="card-title"> Lista de tareas</h5>
                     </div>
                     <div id="task1" class="card-body">
-                        <div class="containerTask" id="toDo">
-                        </div>
+                        <!--Cuerpo del card donde se agregan las tareas-->
+                        <div class="containerTask" id="toDo"></div>
                     </div>
                     <div class="card-footer text-muted">
                         <button type="button" onclick="specificTask('to-do')" class="btn btn-light btn-block" data-toggle="modal"
@@ -147,12 +149,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 pb-1 pb-md-0 dropzone">
-                <div id="task2"  class="card connectedSortable">
+            <div class="col-md-4 pb-1 pb-md-0">
+                <!--Card para la lista de tareas en proceso-->
+                <div id="task2"  class="card">
                     <div class="card-header">
                         <h5 class="card-title"> En proceso</h5>
                     </div>
                     <div id="task2" class="card-body">
+                        <!--Cuerpo del card donde se agregan las tareas-->
                         <div class="containerTask" id="process"></div>
                     </div>
                     <div class="card-footer text-muted">
@@ -165,12 +169,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 pb-1 pb-md-0 dropzone">
-                <div id="task3"  class="card connectedSortable">
+            <div class="col-md-4 pb-1 pb-md-0">
+                <!--Card para la lista de tareas hechas-->
+                <div id="task3"  class="card">
                     <div class="card-header">
                         <h5 class="card-title">Hecho</h5>
                     </div>
                     <div id="task3" class="card-body">
+                        <!--Cuerpo del card donde se agregan las tareas-->
                         <div class="containerTask" id="done"></div>
                     </div>
                     <div class="card-footer text-muted">
@@ -205,9 +211,9 @@
                             <label for="user">Encargado:</label>
                             <select class="form-control" id="user" name="user">
                                 <option value="">--Seleccionar--</option>
-                                <option value="user1">Usuario 1</option>
-                                <option value="user2">Usuario 2</option>
-                                <option value="user3">Usuario 3</option>
+                                <option value="Usuario 1">Usuario 1</option>
+                                <option value="Usuario 2">Usuario 2</option>
+                                <option value="Usuario 3">Usuario 3</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -227,14 +233,13 @@
             </div>
         </div>
     </div>
-    <div id="myElement"></div>
+    
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/helpers/jquery-3.3.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/helpers/popper.min.js"></script>
     <script src="js/helpers/bootstrap-4.3.1.js"></script>
-    <!--Hammer-->
-    <script src="js/gesturesHammer.js"></script>
     <!--Draggable-->
     <script src="js/draggable.js"></script>
 </body>
